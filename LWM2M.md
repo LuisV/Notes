@@ -77,3 +77,25 @@ Example: /12/1/4
 12 = Device Object (Think of this like the Object Blueprint)
 1 = Object Instance #1
 4 = Manufacturer Resource #4
+
+### 7 Mandatory Objects
+| Object Name | ID | Multiple Instances? | Description |
+|---|---|:---:|---|
+|LWM2M Security| 0 | Yes | This object provides key values and components necessary to acces a specified LWM2M server |
+LwM2M Server | 1 | Yes | This object provides the data related to a LWM2M server |
+Access Control | 2 | Yes | This object is used to check whether the LWM2M server has access rights for performing an operation.
+Device | 3 | No | This object provides device related information which can be queried by the LWM2M server. It laso provides steps for device reboot and factory reset functions.
+Connectivity Monitoring | 4 | No | This object enables parameter monitoring related to connectivity.
+Firmware | 5 | No | This object includes steps on installing firmware packages, updating, and performing actions after firmware updates.
+Location | 6 | No | Data related to GPS location of device.
+Connectivity Statistics | 7 | No | This object enables client to collect telemetric stats and allows the LWM2M server to retrieve this information as well as the duration deadline and reset these parameters.
+
+#### Object Example:
+| Resource Name | ID | Access Type | Multiple Instances? | Type | Range | Units | Description |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|---|
+Latitude | 0 | R | No | Decimal | | Deg | Decimal notation of latitude under the _World Geodetic System 1984_. EX: **-43.5723**
+Longitude | 1 | R | No | Decimal | | Deg | Decimal notation of longitude under the _World Geodetic System 1984_. EX: **153.21760**
+Altitude | 2 | R | No | Decimal | | m | The number of altitude in meters above sea level
+Uncertantity | 3 | R | No | Decimal |  | m | The accuracy of the position in meters.
+Velocity | 4 | R | No | 3GPP GAD specs (_Not sure what this means_) | |3GPP GAD specs (_Not sure what this means_) | Velocity of the device as defined in 3GPP 23.032 GAD specification. This may not be available if device is static.
+Timestamp | 5 | R | No | Time | | | Timestamp of when the location measurement was performed and updated
